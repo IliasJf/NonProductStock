@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NonProductManager" Class="NonProductDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-OT3SR5O\SQLEXPRESS;Initial Catalog=NonProductManager;Integrated Security=True" SettingsObjectName="NonProductStock.Properties.Settings" SettingsPropertyName="NonProductManagerConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Compon" Member="Compon">
+    <Type Name="Compon">
+      <Column Name="codeComponents" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SupplierName" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="UnitPrice" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="MeasureUnit" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="EmgStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="PoStatus" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="Commentary" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="Compon_Opera" Member="Opera" ThisKey="codeComponents" OtherKey="codeComponents" Type="Opera" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="Users">
+      <Column Name="idUser" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="username" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="password" Type="System.String" DbType="VarChar(200) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Opera" Member="Opera">
+    <Type Name="Opera">
+      <Column Name="idOperation" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="codeComponents" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="quantityIN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quantityOUT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="currentStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="mp" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="recipiendID" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="site" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="operationType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Compon_Opera" Member="Compon" ThisKey="codeComponents" OtherKey="codeComponents" Type="Compon" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Short" Member="Short">
+    <Type Name="Short">
+      <Column Name="codeComponents" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sumOfQuantityIN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sumOfQuantityOUT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="emgStock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sto" Member="Sto">
+    <Type Name="Sto">
+      <Column Name="codeComponents" Type="System.String" DbType="VarChar(200) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="sumOfQuantityIN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sumOfQuantityOUT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stock" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="uniteMeasure" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
